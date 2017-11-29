@@ -1,6 +1,4 @@
 import socket
-import time
-
 
 def get(path, port):
     """ Just makes a GET request and prints the header """
@@ -13,13 +11,14 @@ def get(path, port):
 
     some_chunks = list()
     while True:
-        chunk = server.recv(1000)
+        chunk = server.recv(100) # This is blockig, so either gets chunks or whaits for
+                                 # connection to be broken.
         if chunk:
             some_chunks.append( chunk)
         else:
-            body = (b''.join(some_chunks)).decode()
-            print(body.split('\n')[0])
-            return 1
+            body = (b''.join(some_chunks)).decode() # Once the connection is broke, 
+            print(body.split('\n')[0])              # we can end put all together and end.
+            return 
 
 def run(request_to_do):
     """ Takes a number and makes so many request"""

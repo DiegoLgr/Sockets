@@ -17,7 +17,7 @@ async def runServer(loop):
 
 async def echo_handler(client, loop):
     """ Gets some data (the http request in this case), 
-        simulates to make something slow and retuns a simple 
+        simulates something slow and retuns a simple 
         message """
 
     while True:

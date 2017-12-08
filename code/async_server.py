@@ -24,7 +24,7 @@ async def echo_handler(client, loop):
         data = await loop.sock_recv(client, 1000)
         print('Recived : ' + data.decode())
         
-        await asyncio.sleep(2) # Simulate some heavy work
+        await asyncio.sleep(3) # Simulate some heavy work
 
         await loop.sock_sendall(client, b'Its working')
         break
